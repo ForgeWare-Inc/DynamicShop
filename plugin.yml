@@ -1,0 +1,113 @@
+name: DynamicShop
+version: 2.0
+
+main: me.zylinder.dynamicshop.DynamicShop
+
+author: Dmitchell94
+website: http://dev.bukkit.org/server-mods/dynshop/
+
+commands:
+    buy:
+        description: Quick command for buying.
+        usage: /buy (material) [amount]
+    sell:
+        description: Quick command for selling.
+        usage: /sell (material) [amount]    
+    dynshop:
+        buy:
+            description: Use this to buy items.
+            usage: /dynshop buy (material) [amount]
+        sell:
+            description: Use this to sell items.
+            usage: /dynshop sell (material) [amount]
+        price:
+            description: Get the price for the material.
+            usage: /dynshop price (material)
+        list:
+            description: Get a list of all prices.
+            usage: /dynshop list (page)
+        help:
+            desciprtion: Show dynshop user commands.
+            usage: /dynshop help
+        admincmd:
+            description: Shows all admin commands.
+            usage: /dynshop admincmd
+        setall:
+            description: Set the data for all items.
+            usage: /dynshop setall (key) (value)
+        setprice:
+            description: Change the price.
+            usage: /dynshop setprice (material) (amount)
+        setpricechange:
+            description: Change the pricechange.
+            usage: /dynshop setpricechange (percent, amount or constant)
+        setpricechangespeed:
+            description: Change the pricechangespeed.
+            usage: /dynshop setpricechange (speed)
+        buytax:
+            description: Get the actual buytax.
+            usage: /dynshop buytax
+        selltax:
+            description: Get the actual selltax.
+            usage: /dynshop selltax
+        setbuytax:
+            description: Set the buytax.
+            usage: /dynshop setbuytax (tax)
+        setselltax:
+            description: Set the selltax.
+            usage: /dynshop setselltax (tax)
+        saveconfig:
+            description: Save the config file.
+            usage: /dynshop saveconfig
+        reloadconfig:
+            description: Reload the config file.
+            usage: /dynshop reloadconfig
+        usage: To view dynshop commands use /dynshop help
+           
+permissions:
+    dynshop:
+        description: Gives access to all DynamicShop commands.
+        children:
+            dynshop.customer: true
+            dynshop.info: true
+            dynshop.admin: true
+            dynshop.globalsigncreate: true
+            dynshop.psigncreate: true
+            
+    dynshop.customer:
+        description: Allows you to trade items and receive information.
+        children:
+            dynshop.customer.buy: true
+            dynshop.customer.sell: true
+            dynshop.customer.info: true
+    dynshop.info:
+        description: Allows you to receive information like prices.
+        children:
+            dynshop.customer.info.price: true
+            dynshop.customer.info.list: true
+            dynshop.customer.info.buytax: true
+            dynshop.customer.info.selltax: true
+    dynshop.admin:
+        description: Allows you to change configurations.
+        children:
+            dynshop.admin.setprice: true
+            dynshop.admin.setpricechange: true
+            dynshop.admin.setpricechangespeed: true
+            dynshop.admin.setall: true
+            dynshop.admin.setbuytax: true
+            dynshop.admin.setselltax: true
+            dynshop.admin.saveconfig: true
+            dynshop.admin.reloadconfig: true
+            
+    dynshop.customer.buy:
+        description: Allows you to buy items.
+        children:
+            dynshop.customer.buy.cmd: true
+            dynshop.customer.buy.sign: true
+            dynshop.customer.buy.unlimited: false
+    dynshop.customer.sell:
+        description: Allows you to sell items.
+        children:
+            dynshop.customer.sell.cmd: true
+            dynshop.customer.sell.sign: true
+            dynshop.customer.sell.unlimited: false
